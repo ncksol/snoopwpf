@@ -12,6 +12,19 @@ All other rights reserved.
 >
 	<!-- styles & templates to make treeview select the whole width wide and not scroll horizontally-->
 
+  <ControlTemplate x:Key="TreeViewControlTemplate1" TargetType="{x:Type TreeView}">
+    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+      <ScrollViewer x:Name="_tv_scrollviewer_" Background="{TemplateBinding Background}" CanContentScroll="False" Focusable="False" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+        <ItemsPresenter/>
+      </ScrollViewer>
+    </Border>
+    <ControlTemplate.Triggers>
+      <Trigger Property="IsEnabled" Value="False">
+        <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  
 	<my:IndentToMarginConverter x:Key='IndentToMarginConverter'/>
 
 	<Style x:Key='TreeViewToggleStyle' TargetType="{x:Type ToggleButton}">
